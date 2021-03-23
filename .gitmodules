@@ -1,0 +1,3 @@
+[submodule "notebooks/lv-ortho-modes"]
+	path = notebooks/lv-ortho-modes
+	url = https://github.com/CardiacAtlasProject/lv-ortho-modes.git

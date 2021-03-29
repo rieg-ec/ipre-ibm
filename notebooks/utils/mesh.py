@@ -7,7 +7,7 @@ from scipy.spatial import cKDTree
 import collections
 from tvtk.api import tvtk
 from tvtk.common import configure_input
-import scipy.sparse as sp
+# import scipy.sparse as sp
 
 
 class Mesh:

@@ -98,7 +98,7 @@ class Mesh:
                 f.writelines('v ' + " ".join(str(i) for i in vert) + "\n")
 
             for face in self.connectivity:
-                f.writelines('f ' + " ".join(str(i) for i in face) + "\n")
+                f.writelines('f ' + " ".join(str(i + 1) for i in face) + "\n")
 
     def project_new_point(self, point, verts_to_search=1):
         """This function receives a triangle and project it on the mesh in order to get the index of the triangle where

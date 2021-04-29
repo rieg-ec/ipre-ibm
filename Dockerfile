@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM nvidia/cuda:11.1-runtime
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -8,8 +8,7 @@ RUN apt-get update && apt-get install -y \
 	python3-opencv && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install tensorflow && \
-    pip3 install numpy \
+RUN pip3 install numpy \
         pandas \
         sklearn \
         matplotlib \
@@ -21,10 +20,12 @@ RUN pip3 install tensorflow && \
         pyreadr \
         meshio \
         h5py && \
-    pip3 install keras --no-deps && \
-    pip3 install opencv-python && \
-    pip3 install imutils && \
-    pip3 install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+    pip3 install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html && \
+    pip3 install torch-scatter -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip3 install torch-sparse -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip3 install torch-cluster -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip3 install torch-spline-conv -f https://pytorch-geometric.com/whl/torch-1.8.0+cu111.html && \
+    pip3 install torch-geometric
 
 
 RUN ["mkdir", "notebooks"]

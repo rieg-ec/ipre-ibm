@@ -57,7 +57,9 @@ class GraphData:
                 pos_es = torch.tensor(es.reshape(self.points//3, 3), dtype=torch.float)
                 data = Data(pos=pos_ed, face=faces, y=y)
                 data.x = torch.tensor(np.concatenate((pos_ed, pos_es), axis=1))
-                list_.append(transformer(data))
+                data = transformer(data)
+                data.face = faces
+                list_.append(data)
                 
         create_data(0, train_x, points["ed_endo"]["asymp"], points["es_endo"]["asymp"], 0, self.train_samples)
         create_data(0, train_y, points["ed_endo"]["mi"], points["es_endo"]["mi"], 1, self.train_samples)

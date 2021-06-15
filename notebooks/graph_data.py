@@ -83,5 +83,5 @@ class GraphData:
         self.test_loader = DataLoader(self.test_samples, batch_size=16, shuffle=True)
         
     def return_random_graph(self) -> Data:
-        n = randint(0, len(self.test_samples))
+        n = randint(0, len(self.test_samples) - 1)
         return self.test_samples[n]
